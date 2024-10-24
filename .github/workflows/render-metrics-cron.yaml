@@ -1,10 +1,10 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples/render-rmarkdown.yaml
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
-name: render-metrics-cron.yaml
+name: Scheduled task
 
 on: 
   schedule: 
-    - cron: '0 11 * * THU'
+    - cron: '30 11 * * THU'
   
 permissions: read-all
 
