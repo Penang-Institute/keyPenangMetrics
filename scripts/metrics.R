@@ -15,7 +15,6 @@ req_gdp_growth <- base_request |>
     limit = 1,
     include = "date,value"
   )
-req_perform(req_gdp_growth) |> resp_body_json()
 
 req_income <- base_request |>
   req_url_query(
@@ -35,8 +34,6 @@ req_cpi <- base_request |>
     include = "date,inflation_yoy",
     limit = 1
   )
-
-req_perform(req_cpi) |> resp_body_json() 
 
 req_ur <- base_request |>
   req_url_query(
@@ -62,7 +59,9 @@ list(
   tidyr::pivot_longer(-c(date, dataset), values_drop_na = TRUE) |> 
   mutate(date = as.Date(date)) -> response_bodies_summarized
 
-req_perform(req_ur) |> resp_body_json()
+
+new_dir <- "output/"
+if(!dir.exists(file.path(new_dir))) dir.create(file.path(new_dir))
 
 arrow::read_parquet(
   "https://storage.dosm.gov.my/population/population_state.parquet",
