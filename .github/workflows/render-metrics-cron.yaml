@@ -36,7 +36,7 @@ jobs:
           "farver", "generics", "glue", "httr2", "labeling", "lifecycle", 
           "lubridate", "magrittr", "munsell", "openssl", "pillar", "pkgconfig", 
           "purrr", "rappdirs", "renv", "rlang", "scales", "stringi", "stringr", 
-          "sys", "tibble", "tidyr", "tidyselect", "timechange", "utf8", 
+          "sys", "tibble", "tidyr", "tidyselect", "timechange", "utf8", "jsonlite", 
           "vctrs", "viridisLite", "withr"))'
 
       - name: Render metrics and Commit Results
