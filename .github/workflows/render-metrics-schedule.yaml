@@ -39,7 +39,7 @@ jobs:
 
       - name: Render metrics and Commit Results
         run: |
-          Rscript -e 'scripts/metrics.R'
+          Rscript scripts/metrics.R
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git commit output/metrics.tsv -m 'Update metrics' || echo "No changes to commit"
