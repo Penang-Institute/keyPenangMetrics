@@ -4,11 +4,9 @@ on:
   push:
     paths: ['**.Rmd']
 
-name: render-metrics.yaml
+name: render-metrics-schedule.yaml
 on: 
   workflow_dispatch
-  schedule: 
-    - cron: '0 12 * * MON'
   
 permissions: read-all
 
