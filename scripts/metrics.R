@@ -2,6 +2,7 @@
 library(httr2)
 library(dplyr)
 library(purrr)
+
 base_request <- httr2::request("https://api.data.gov.my/data-catalogue?")
 
 req_gdp_growth <- base_request |>
