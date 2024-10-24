@@ -7,7 +7,7 @@ on: workflow_dispatch
 permissions: read-all
 
 jobs:
-  render-rmarkdown:
+  render-metrics:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

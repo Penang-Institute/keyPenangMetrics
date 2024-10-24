@@ -4,12 +4,12 @@ name: render-metrics-cron.yaml
 
 on: 
   schedule: 
-    - cron: '0 12 * * MON'
+    - cron: '0 11 * * THU'
   
 permissions: read-all
 
 jobs:
-  render-rmarkdown:
+  render-metrics:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
