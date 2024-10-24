@@ -27,13 +27,14 @@ jobs:
       - name: Package Dependencies
         # takes advantage of r2u to install the named CRAN packages as binaries
         # in the r2u context we could also use script 'install.r' 
-        run: Rscript -e 'install.packages(c("R6", "RColorBrewer", "arrow", "askpass", "assertthat", "bit", 
-"bit64", "cli", "colorspace", "cpp11", "curl", "dplyr", "fansi", 
-"farver", "generics", "glue", "httr2", "labeling", "lifecycle", 
-"lubridate", "magrittr", "munsell", "openssl", "pillar", "pkgconfig", 
-"purrr", "rappdirs", "renv", "rlang", "scales", "stringi", "stringr", 
-"sys", "tibble", "tidyr", "tidyselect", "timechange", "utf8", 
-"vctrs", "viridisLite", "withr"))'
+        run: |
+          Rscript -e 'install.packages(c("R6", "RColorBrewer", "arrow", "askpass", "assertthat", "bit", 
+          "bit64", "cli", "colorspace", "cpp11", "curl", "dplyr", "fansi", 
+          "farver", "generics", "glue", "httr2", "labeling", "lifecycle", 
+          "lubridate", "magrittr", "munsell", "openssl", "pillar", "pkgconfig", 
+          "purrr", "rappdirs", "renv", "rlang", "scales", "stringi", "stringr", 
+          "sys", "tibble", "tidyr", "tidyselect", "timechange", "utf8", 
+          "vctrs", "viridisLite", "withr"))'
 
       - name: Render metrics and Commit Results
         run: |
