@@ -5,6 +5,7 @@ on:
     paths: ['**.Rmd']
 
 name: render-metrics-cron.yaml
+
 on: 
   schedule: 
     - cron: '0 12 * * MON'

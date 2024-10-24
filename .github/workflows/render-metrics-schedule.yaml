@@ -5,8 +5,8 @@ on:
     paths: ['**.Rmd']
 
 name: render-metrics-schedule.yaml
-on: 
-  workflow_dispatch
+
+on: workflow_dispatch
   
 permissions: read-all
 
