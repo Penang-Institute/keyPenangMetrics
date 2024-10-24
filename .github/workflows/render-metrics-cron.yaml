@@ -4,7 +4,7 @@ name: Scheduled task
 
 on: 
   schedule: 
-    - cron: '00 12 * * THU'
+    - cron: '00 5 * * THU'
   
 permissions: read-all
 
