@@ -22,6 +22,9 @@ jobs:
       - name: Setup r2u
         uses: eddelbuettel/github-actions/r2u-setup@master
         
+      - name: SessionInfo
+        run: R -q -e 'sessionInfo()'
+        
       - name: Package Dependencies
         # takes advantage of r2u to install the named CRAN packages as binaries
         # in the r2u context we could also use script 'install.r' 

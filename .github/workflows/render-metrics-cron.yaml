@@ -28,6 +28,7 @@ jobs:
         # takes advantage of r2u to install the named CRAN packages as binaries
         # in the r2u context we could also use script 'install.r' 
         run: |
+          RScript -e "install.packages("bspm")
           Rscript -e 'install.packages(c("R6", "RColorBrewer", "arrow", "askpass", "assertthat", "bit", 
           "bit64", "cli", "colorspace", "cpp11", "curl", "dplyr", "fansi", 
           "farver", "generics", "glue", "httr2", "labeling", "lifecycle", 
