@@ -86,7 +86,7 @@ arrow::read_parquet(
     ), 
     value = case_match(
       name, 
-      "population" ~ scales::label_comma()(value * 1000), 
+      "population" ~ scales::label_comma(suffix = "mil", accuracy = .01)(value / 1000), 
       "income_median" ~ scales::label_comma(prefix = "RM", accuracy = 1)(value), 
       .default = scales::label_number(suffix = "%", accuracy = .01)(value)
     ), 
