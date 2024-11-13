@@ -1,0 +1,20 @@
+- description: Population
+  subtitle: '1,800,400'
+  title: '2024'
+  path: dashboards/pop.html
+- description: GDP growth
+  subtitle: 3.27%
+  title: '2023'
+  path: dashboards/gdp.html
+- description: Median gross household income
+  subtitle: RM6,502
+  title: '2022'
+  path: dashboards/hhinc.html
+- description: CPI inflation, year-on-year
+  subtitle: 3.10%
+  title: Sep 2024
+  path: dashboards/cpi.html
+- description: Unemployment rate
+  subtitle: 1.80%
+  title: Q2 2024
+  path: dashboards/labour.html
