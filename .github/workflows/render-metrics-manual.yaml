@@ -9,9 +9,6 @@ permissions: read-all
 jobs:
   render-metrics:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./scripts
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
@@ -31,7 +28,7 @@ jobs:
       - name: Package Dependencies
         # takes advantage of r2u to install the named CRAN packages as binaries
         # in the r2u context we could also use script 'install.r' 
-        run: Rscript install.R
+        run: Rscript ./install.R
 
       - name: Render metrics and Commit Results
         run: |
