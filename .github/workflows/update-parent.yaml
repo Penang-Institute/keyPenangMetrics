@@ -16,6 +16,7 @@ jobs:
           repository: Penang-Institute/pistats
           token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
           submodules: true
+          persist-credentials: false
 
       - name: Pull & update submodules recursively
         run: |
