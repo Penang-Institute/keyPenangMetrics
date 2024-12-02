@@ -1,9 +1,8 @@
 name: Send submodule updates to parent repo
 
 on:
-  push:
-    branches: 
-      - main
+  repository_dispatch:
+    types: [publish-trigger]
 
 jobs:
   update:
