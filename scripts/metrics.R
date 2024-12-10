@@ -108,6 +108,9 @@ ds |>
   mutate(path = path[description]) |> 
   yaml::write_yaml("output/metrics_grid.yaml", column.major = FALSE)
 
+ds |> 
+  rename(description = dataset) |> 
+  jsonlite::write_json("output/metrics_grid.json", dataframe = "rows")
 # update Penang Monthly Statistics RSS
 
 library(xml2)
