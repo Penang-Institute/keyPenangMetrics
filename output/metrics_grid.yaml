@@ -12,9 +12,9 @@
   path: dashboards/hhinc.html
 - description: CPI inflation, year-on-year
   subtitle: 3.10%
-  title: Sep 2024
+  title: Oct 2024
   path: dashboards/cpi.html
 - description: Unemployment rate
-  subtitle: 1.80%
-  title: Q2 2024
+  subtitle: 2.00%
+  title: Q3 2024
   path: dashboards/labour.html

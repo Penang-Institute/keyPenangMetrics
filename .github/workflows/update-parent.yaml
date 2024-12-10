@@ -1,9 +1,8 @@
 name: Send submodule updates to parent repo
 
 on:
-  push:
-    branches: 
-      - main
+  repository_dispatch:
+    types: [publish-trigger]
 
 jobs:
   update:
@@ -14,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
         with: 
           repository: Penang-Institute/pistats
-          token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
+          # token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
           submodules: true
           persist-credentials: false
 
@@ -29,4 +28,10 @@ jobs:
           git config user.name "GitHub Actions - update submodules"
           git add --all
           git commit -m "Update submodules" || echo "No changes to commit"
-          git push
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
+          repository: Penang-Institute/pistats
+        
