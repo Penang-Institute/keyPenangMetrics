@@ -1,3 +1,5 @@
+Sys.setenv(ARROW_WITH_BROTLI = "ON")
+
 install.packages(c("R6", "RColorBrewer", "arrow", "askpass", "assertthat", "bit", 
 "bit64", "cli", "colorspace", "cpp11", "curl", "dplyr", "fansi", 
 "farver", "generics", "glue", "httr2", "labeling", "lifecycle", 
