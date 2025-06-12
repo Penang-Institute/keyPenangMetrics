@@ -11,7 +11,24 @@ Compiles latest data on key Penang metrics from [data-gov-my](https://github.com
 ### R (Legacy)
 - `scripts/metrics.R` - Original R implementation (maintained for backup)
 
+## GitHub Actions
+
+### Python Workflows (Current)
+- `render-metrics-cron-python.yaml` - Scheduled execution every Thursday at 5am UTC
+- `render-metrics-manual-python.yaml` - Manual trigger workflow
+
+### R Workflows (Legacy)
+- `render-metrics-cron.yaml` - Original R-based scheduled workflow (inactive)
+- `render-metrics-manual.yaml` - Original R-based manual workflow (inactive)
+
 ## Changelog
+
+### 2025-06-12 - Python Migration Complete
+- **Added**: GitHub Actions workflows for Python execution
+  - `render-metrics-cron-python.yaml` - Automated weekly execution
+  - `render-metrics-manual-python.yaml` - Manual trigger capability
+- **Updated**: Production deployment now uses Python implementation
+- **Status**: Migration fully complete and operational
 
 ### 2025-06-03 - Python Migration
 - **Added**: `scripts/metrics.py` - Python version of the metrics processing script
@@ -25,11 +42,12 @@ Compiles latest data on key Penang metrics from [data-gov-my](https://github.com
 
 ### Features of Python Implementation
 - **Better Error Handling**: Comprehensive try-catch blocks with informative error messages
-- **Timeout Protection**: 30-second timeouts on all HTTP requests to prevent hanging
-- **Response Validation**: Handles different API response structures robustly  
+- **API Response Validation**: Handles different API response structures robustly  
+- **Direct Parquet Processing**: Uses pandas and PyArrow for efficient data handling
 - **UTF-8 Encoding**: Explicit encoding for all file operations
 - **Defensive Programming**: Checks for empty responses and missing data fields
 - **Improved Logging**: Detailed progress and error reporting
+- **Automated Deployment**: GitHub Actions workflows for scheduled and manual execution
 
 ## Dependencies
 

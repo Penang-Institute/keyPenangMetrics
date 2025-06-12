@@ -76,9 +76,8 @@ def get_population():
     """Get population data from parquet file"""
     url = "https://storage.dosm.gov.my/population/population_state.parquet"
     
-    # Read parquet file
-    table = pq.read_table(url)
-    df = table.to_pandas()
+    # Read parquet file via pandas (handles URLs)
+    df = pd.read_parquet(url)
     
     # Filter data
     filtered = df[
@@ -217,7 +216,7 @@ def save_metrics_json(data, filename='output/metrics_grid.json'):
         })
     
     with open(filename, 'w') as f:
-        json.dump(json_data, f)
+        json.dump(json_data, f, indent=2)
 
 def process_penang_monthly_rss():
     """Process Penang Monthly RSS feed for statistics articles"""
