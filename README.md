@@ -17,11 +17,17 @@ Compiles latest data on key Penang metrics from [data-gov-my](https://github.com
 - `render-metrics-cron-python.yaml` - Scheduled execution every Thursday at 5am UTC
 - `render-metrics-manual-python.yaml` - Manual trigger workflow
 
-### R Workflows (Legacy)
-- `render-metrics-cron.yaml` - Original R-based scheduled workflow (inactive)
-- `render-metrics-manual.yaml` - Original R-based manual workflow (inactive)
+### R Workflows (Disabled)
+- `render-metrics-cron.yaml.disabled` - Original R-based scheduled workflow (disabled)
+- `render-metrics-manual.yaml.disabled` - Original R-based manual workflow (disabled)
 
 ## Changelog
+
+### 2025-06-13 - R to Python Migration Finalized
+- **Disabled**: R-based GitHub Actions workflows (moved to .disabled extension)
+- **Primary**: Python implementation now the sole production system
+- **Status**: R workflows deactivated, Python workflows operational
+- **Migration**: Complete transition from R to Python accomplished
 
 ### 2025-06-12 - Python Migration Complete
 - **Added**: GitHub Actions workflows for Python execution
