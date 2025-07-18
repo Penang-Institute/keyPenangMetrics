@@ -2,6 +2,26 @@
 
 Compiles latest data on key Penang metrics from [data-gov-my](https://github.com/data-gov-my/) API every week and outputs [metrics.tsv](output/metrics.tsv).
 
+**Live Website**: https://statistics.penanginstitute.org/
+
+## Architecture
+
+This repository serves as a data pipeline that:
+1. **Fetches** key metrics from Malaysian government APIs weekly
+2. **Processes** data into multiple formats (TSV, YAML, JSON)
+3. **Deploys** automatically to the main [pistats](https://github.com/Penang-Institute/pistats) repository as a submodule
+4. **Updates** the live statistics website with fresh data
+
+## Data Sources
+
+The system retrieves data from multiple [data-gov-my](https://github.com/data-gov-my/) APIs:
+- Population statistics
+- GDP and economic indicators
+- Employment data
+- Consumer Price Index (CPI)
+- Household income metrics
+- RSS feed from Penang Monthly publications
+
 ## Scripts
 
 ### Python (Current)
@@ -16,6 +36,15 @@ Compiles latest data on key Penang metrics from [data-gov-my](https://github.com
 ### Python Workflows (Current)
 - `render-metrics-cron-python.yaml` - Scheduled execution every Thursday at 5am UTC
 - `render-metrics-manual-python.yaml` - Manual trigger workflow
+
+#### Manual Execution
+To manually trigger the data update workflow:
+1. Go to the [Actions tab](https://github.com/Penang-Institute/keyPenangMetrics/actions)
+2. Select "Manual task (Python)" workflow
+3. Click "Run workflow" button
+4. Confirm by clicking "Run workflow"
+
+This will immediately fetch fresh data and update the live website.
 
 ### R Workflows (Disabled)
 - `render-metrics-cron.yaml.disabled` - Original R-based scheduled workflow (disabled)
@@ -79,8 +108,12 @@ source("scripts/metrics.R")
 
 ## Output Files
 
-Both scripts generate the same output files:
+The Python script generates the following output files:
 - `output/metrics.tsv` - Tab-separated values for key metrics
+- `output/metrics_python.tsv` - Python-specific metrics output
 - `output/metrics_grid.yaml` - YAML format for Quarto grid display
 - `output/metrics_grid.json` - JSON format for web applications
+- `output/metrics_grid_python.yaml` - Python-specific YAML grid format
 - `output/penang-monthly-stats.yaml` - Penang Monthly statistics articles from RSS feed
+
+These files are automatically integrated into the [pistats website](https://statistics.penanginstitute.org/) through the submodule system.
