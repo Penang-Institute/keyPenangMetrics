@@ -12,8 +12,8 @@
   title: '2022'
 - description: CPI inflation, year-on-year
   path: dashboards/cpi.html
-  subtitle: 1.00%
-  title: Aug 2025
+  subtitle: 1.20%
+  title: Sep 2025
 - description: Unemployment rate
   path: dashboards/labour.html
   subtitle: 2.20%
