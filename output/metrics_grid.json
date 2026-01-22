@@ -16,12 +16,12 @@
   },
   {
     "description": "CPI inflation, year-on-year",
-    "value": "1.00%",
-    "date_format": "Nov 2025"
+    "value": "1.30%",
+    "date_format": "Dec 2025"
   },
   {
     "description": "Unemployment rate",
-    "value": "2.20%",
-    "date_format": "Q4 2024"
+    "value": "2.70%",
+    "date_format": "Q3 2025"
   }
 ]
