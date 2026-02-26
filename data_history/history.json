@@ -173,5 +173,40 @@
     "success": true,
     "error": null,
     "duration_seconds": 9.765769004821777
+  },
+  {
+    "timestamp": "2026-02-26T06:46:10.529343",
+    "data": [
+      {
+        "dataset": "Population",
+        "value": "1.80mil",
+        "date_format": "2025"
+      },
+      {
+        "dataset": "GDP growth",
+        "value": "3.27%",
+        "date_format": "2023"
+      },
+      {
+        "dataset": "Median gross household income",
+        "value": "RM6,502",
+        "date_format": "2022"
+      },
+      {
+        "dataset": "CPI inflation, year-on-year",
+        "value": "1.50%",
+        "date_format": "Jan 2026"
+      },
+      {
+        "dataset": "Unemployment rate",
+        "value": "2.70%",
+        "date_format": "Q3 2025"
+      }
+    ],
+    "data_hash": "99487fad0245f3a2af6d82a8bf3d33d5",
+    "changes": {},
+    "success": true,
+    "error": null,
+    "duration_seconds": 5.926940202713013
   }
 ]
