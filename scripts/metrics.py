@@ -75,10 +75,22 @@ def get_unemployment():
 def get_population():
     """Get population data from parquet file"""
     url = "https://storage.dosm.gov.my/population/population_state.parquet"
-    
-    # Read parquet file via pandas (handles URLs)
-    df = pd.read_parquet(url)
-    
+
+    # Download parquet to memory buffer first to avoid PyArrow streaming errors
+    # (e.g. "Repetition level histogram size mismatch" from incomplete HTTP reads)
+    import io
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            resp = requests.get(url, timeout=30)
+            resp.raise_for_status()
+            df = pd.read_parquet(io.BytesIO(resp.content))
+            break
+        except Exception as e:
+            if attempt == max_retries - 1:
+                raise
+            print(f"Parquet read attempt {attempt + 1} failed: {e}, retrying...")
+
     # Filter data
     filtered = df[
         (df['sex'] == 'both') &
@@ -86,10 +98,10 @@ def get_population():
         (df['ethnicity'] == 'overall') &
         (df['state'] == 'Pulau Pinang')
     ]
-    
+
     # Get latest date
     latest = filtered[filtered['date'] == filtered['date'].max()]
-    
+
     return {
         'date': latest['date'].iloc[0].strftime('%Y-%m-%d'),
         'population': latest['population'].iloc[0]
@@ -269,20 +281,48 @@ def process_penang_monthly_rss():
 
 def main():
     """Main function to run all processing"""
+    import time
+    from track_changes import detect_changes, log_execution, get_change_summary
+
+    start_time = time.time()
     print("Processing metrics data...")
-    
-    # Process metrics
-    metrics_data = process_api_data()
-    
-    # Save in multiple formats
-    save_metrics_tsv(metrics_data)
-    save_metrics_yaml(metrics_data)
-    save_metrics_json(metrics_data)
-    
-    print("Processing Penang Monthly RSS...")
-    process_penang_monthly_rss()
-    
-    print("Done!")
+
+    try:
+        # Process metrics
+        metrics_data = process_api_data()
+
+        # Detect changes
+        changes = detect_changes(metrics_data)
+        change_summary = get_change_summary(changes)
+
+        if changes and '_initial' not in changes:
+            print(f"✓ Changes detected: {change_summary}")
+        else:
+            print("✓ No changes detected (data unchanged)")
+
+        # Save in multiple formats
+        save_metrics_tsv(metrics_data)
+        save_metrics_yaml(metrics_data)
+        save_metrics_json(metrics_data)
+
+        print("Processing Penang Monthly RSS...")
+        process_penang_monthly_rss()
+
+        # Calculate duration
+        duration = time.time() - start_time
+
+        # Log successful execution
+        log_execution(metrics_data, changes, success=True, duration=duration)
+
+        print(f"Done! (Execution time: {duration:.2f}s)")
+
+    except Exception as e:
+        duration = time.time() - start_time
+        print(f"Error: {e}")
+
+        # Log failed execution
+        log_execution([], {}, success=False, error=e, duration=duration)
+        raise
 
 if __name__ == "__main__":
     main()
