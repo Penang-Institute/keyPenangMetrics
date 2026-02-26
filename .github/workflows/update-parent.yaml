@@ -10,12 +10,11 @@ jobs:
     environment: 'update module'
 
     steps:
-      - uses: actions/checkout@v2
-        with: 
+      - uses: actions/checkout@v4
+        with:
           repository: Penang-Institute/pistats
-          # token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
+          token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
           submodules: true
-          persist-credentials: false
 
       - name: Pull & update submodules recursively
         run: |
@@ -28,10 +27,6 @@ jobs:
           git config user.name "GitHub Actions - update submodules"
           git add --all
           git commit -m "Update submodules" || echo "No changes to commit"
-          
+
       - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
-          repository: Penang-Institute/pistats
-        
+        run: git push
