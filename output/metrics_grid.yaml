@@ -12,8 +12,8 @@
   title: '2022'
 - description: CPI inflation, year-on-year
   path: dashboards/cpi.html
-  subtitle: 1.50%
-  title: Jan 2026
+  subtitle: 1.60%
+  title: Feb 2026
 - description: Unemployment rate
   path: dashboards/labour.html
   subtitle: 2.70%
