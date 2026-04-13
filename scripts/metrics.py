@@ -204,7 +204,7 @@ def save_metrics_yaml(data, filename='output/metrics_grid.yaml'):
         'CPI inflation, year-on-year': 'dashboards/cpi.html',
         'Unemployment rate': 'dashboards/labour.html'
     }
-    
+
     yaml_data = []
     for record in data:
         yaml_data.append({
@@ -213,20 +213,24 @@ def save_metrics_yaml(data, filename='output/metrics_grid.yaml'):
             'title': record['date_format'],
             'path': path_mapping.get(record['dataset'], '')
         })
-    
+
     with open(filename, 'w') as f:
         yaml.dump(yaml_data, f, default_flow_style=False)
 
 def save_metrics_json(data, filename='output/metrics_grid.json'):
-    """Save metrics data as JSON"""
+    """Save metrics data as JSON with pipeline refresh timestamp"""
+    from datetime import datetime
+
+    last_updated = datetime.now().strftime("%-d %b %Y")
     json_data = []
     for record in data:
         json_data.append({
             'description': record['dataset'],
             'value': record['value'],
-            'date_format': record['date_format']
+            'date_format': record['date_format'],
+            'last_updated': last_updated
         })
-    
+
     with open(filename, 'w') as f:
         json.dump(json_data, f, indent=2)
 
