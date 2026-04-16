@@ -1,25 +1,20 @@
 - description: Population
   path: dashboards/pop.html
-  source: api
   subtitle: 1.80mil
   title: '2025'
 - description: GDP growth
   path: dashboards/gdp.html
-  source: manual
   subtitle: 4.78%
   title: '2024'
 - description: Median gross household income
   path: dashboards/hhinc.html
-  source: api
   subtitle: RM6,502
   title: '2022'
 - description: CPI inflation, year-on-year
   path: dashboards/cpi.html
-  source: api
   subtitle: 1.60%
   title: Feb 2026
 - description: Unemployment rate
   path: dashboards/labour.html
-  source: api
   subtitle: 2.70%
   title: Q3 2025

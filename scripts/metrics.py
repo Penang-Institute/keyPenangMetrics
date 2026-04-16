@@ -288,7 +288,6 @@ def save_metrics_yaml(data, filename='output/metrics_grid.yaml'):
             'subtitle': record['value'],
             'title': record['date_format'],
             'path': path_mapping.get(record['dataset'], ''),
-            'source': record.get('source', 'api'),
         })
 
     with open(filename, 'w') as f:
