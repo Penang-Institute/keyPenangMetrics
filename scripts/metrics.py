@@ -13,6 +13,7 @@ import pyarrow.parquet as pq
 from datetime import datetime
 import xml.etree.ElementTree as ET
 from urllib.parse import urlencode
+from pathlib import Path
 
 def create_base_request():
     """Create base API request URL"""
@@ -130,15 +131,75 @@ def format_value(value, metric_type):
     else:
         return f"{value:.2f}%"
 
+# ---------------------------------------------------------------------------
+# Manual override support
+# ---------------------------------------------------------------------------
+
+# Maps override keys → (dataset display name, metric_type for formatting)
+OVERRIDE_KEY_MAP = {
+    'gdp_growth':   ('GDP growth', 'value'),
+    'population':   ('Population', 'population'),
+    'income':       ('Median gross household income', 'income_median'),
+    'cpi':          ('CPI inflation, year-on-year', 'inflation_yoy'),
+    'unemployment': ('Unemployment rate', 'u_rate'),
+}
+
+
+def load_manual_overrides() -> dict:
+    """Load manual overrides from config/manual_overrides.yaml.
+
+    Returns a dict keyed by metric key (e.g. 'gdp_growth') with
+    sub-keys: value, date (as str), source.  Returns empty dict
+    if the file is missing or empty.
+    """
+    config_path = Path(__file__).resolve().parent.parent / "config" / "manual_overrides.yaml"
+    if not config_path.exists():
+        return {}
+    with open(config_path) as f:
+        data = yaml.safe_load(f)
+    return data if isinstance(data, dict) else {}
+
+
+def apply_override(
+    dataset_name: str,
+    api_value: float,
+    api_date: str,
+    metric_type: str,
+    overrides: dict,
+) -> tuple:
+    """Return (value, date, metric_type, source) after checking overrides.
+
+    If a manual override exists and its date is strictly newer than the
+    API date, the override wins.  Otherwise the API value is used.
+    """
+    # Find the override key for this dataset name
+    override_key = None
+    for key, (display_name, _) in OVERRIDE_KEY_MAP.items():
+        if display_name == dataset_name:
+            override_key = key
+            break
+
+    if override_key and override_key in overrides:
+        ovr = overrides[override_key]
+        ovr_date = str(ovr['date'])  # ensure string
+        # Compare dates (YYYY-MM-DD string comparison works for ISO dates)
+        if ovr_date > api_date:
+            return ovr['value'], ovr_date, metric_type, 'manual'
+
+    return api_value, api_date, metric_type, 'api'
+
+
 def process_api_data():
     """Process all API data and combine into standardized format"""
+    overrides = load_manual_overrides()
+
     # Get all data
     gdp_data = get_gdp_growth()
     income_data = get_income()
     cpi_data = get_cpi()
     unemployment_data = get_unemployment()
     population_data = get_population()
-    
+
     # Process API responses
     datasets = {
         'GDP growth': gdp_data,
@@ -146,15 +207,15 @@ def process_api_data():
         'CPI inflation, year-on-year': cpi_data,
         'Unemployment rate': unemployment_data
     }
-    
+
     results = []
-    
+
     # Process API datasets
     for dataset_name, data in datasets.items():
         if data and len(data) > 0:
             record = data[0]
             date = record['date']
-            
+
             # Determine value key
             if 'value' in record:
                 value = record['value']
@@ -170,30 +231,45 @@ def process_api_data():
                 metric_type = 'u_rate'
             else:
                 continue
-            
+
+            # Check for manual override
+            value, date, metric_type, source = apply_override(
+                dataset_name, value, date, metric_type, overrides
+            )
+
             results.append({
                 'dataset': dataset_name,
                 'value': format_value(value, metric_type),
-                'date_format': format_date(date, metric_type)
+                'date_format': format_date(date, metric_type),
+                'source': source,
             })
-    
-    # Add population data
+
+    # Add population data — also check override
+    pop_value, pop_date, pop_type, pop_source = apply_override(
+        'Population',
+        population_data['population'],
+        population_data['date'],
+        'population',
+        overrides,
+    )
     results.insert(0, {
         'dataset': 'Population',
-        'value': format_value(population_data['population'], 'population'),
-        'date_format': format_date(population_data['date'], 'population')
+        'value': format_value(pop_value, pop_type),
+        'date_format': format_date(pop_date, pop_type),
+        'source': pop_source,
     })
-    
+
     return results
 
 def save_metrics_tsv(data, filename='output/metrics.tsv'):
     """Save metrics data as TSV file"""
     os.makedirs('output', exist_ok=True)
-    
+
     with open(filename, 'w') as f:
-        f.write("dataset\tvalue\tdate_format\n")
+        f.write("dataset\tvalue\tdate_format\tsource\n")
         for record in data:
-            f.write(f"{record['dataset']}\t{record['value']}\t{record['date_format']}\n")
+            source = record.get('source', 'api')
+            f.write(f"{record['dataset']}\t{record['value']}\t{record['date_format']}\t{source}\n")
 
 def save_metrics_yaml(data, filename='output/metrics_grid.yaml'):
     """Save metrics data as YAML for Quarto grid"""
@@ -211,7 +287,8 @@ def save_metrics_yaml(data, filename='output/metrics_grid.yaml'):
             'description': record['dataset'],
             'subtitle': record['value'],
             'title': record['date_format'],
-            'path': path_mapping.get(record['dataset'], '')
+            'path': path_mapping.get(record['dataset'], ''),
+            'source': record.get('source', 'api'),
         })
 
     with open(filename, 'w') as f:
@@ -228,7 +305,8 @@ def save_metrics_json(data, filename='output/metrics_grid.json'):
             'description': record['dataset'],
             'value': record['value'],
             'date_format': record['date_format'],
-            'last_updated': last_updated
+            'last_updated': last_updated,
+            'source': record.get('source', 'api'),
         })
 
     with open(filename, 'w') as f:

@@ -1,0 +1,24 @@
+# Manual data overrides for Penang at a Glance metrics.
+# Used when OpenDOSM API data is stale or unavailable.
+# The pipeline automatically prefers API data once it catches up
+# (i.e., when API returns a date >= the override date).
+#
+# Format:
+#   metric_key:
+#     value: <number>        # Raw numeric value (not formatted)
+#     date: "YYYY-MM-DD"     # Date of the data point
+#     source: "<citation>"   # Where the data came from
+#
+# Supported keys:
+#   gdp_growth   - GDP growth rate (%)
+#   population   - Population count (thousands)
+#   income       - Median gross household income (RM)
+#   cpi          - CPI inflation year-on-year (%)
+#   unemployment - Unemployment rate (%)
+#
+# To disable an override, comment it out or remove it.
+
+gdp_growth:
+  value: 4.78
+  date: "2024-01-01"
+  source: "DOSM GDP publication 2024 (Real GDP RM121,496.28mil, YoY growth from RM115,957mil)"

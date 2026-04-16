@@ -1,6 +1,6 @@
-dataset	value	date_format
-Population	1.80mil	2025
-GDP growth	3.27%	2023
-Median gross household income	RM6,502	2022
-CPI inflation, year-on-year	1.60%	Feb 2026
-Unemployment rate	2.70%	Q3 2025
+dataset	value	date_format	source
+Population	1.80mil	2025	api
+GDP growth	4.78%	2024	manual
+Median gross household income	RM6,502	2022	api
+CPI inflation, year-on-year	1.60%	Feb 2026	api
+Unemployment rate	2.70%	Q3 2025	api

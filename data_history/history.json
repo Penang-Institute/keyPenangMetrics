@@ -429,38 +429,141 @@
     "duration_seconds": 9.756627321243286
   },
   {
-    "timestamp": "2026-04-16T06:59:24.048654",
+    "timestamp": "2026-04-16T15:49:51.861720",
     "data": [
       {
         "dataset": "Population",
         "value": "1.80mil",
-        "date_format": "2025"
+        "date_format": "2025",
+        "source": "api"
       },
       {
         "dataset": "GDP growth",
         "value": "3.27%",
-        "date_format": "2023"
+        "date_format": "2023",
+        "source": "api"
       },
       {
         "dataset": "Median gross household income",
         "value": "RM6,502",
-        "date_format": "2022"
+        "date_format": "2022",
+        "source": "api"
       },
       {
         "dataset": "CPI inflation, year-on-year",
         "value": "1.60%",
-        "date_format": "Feb 2026"
+        "date_format": "Feb 2026",
+        "source": "api"
       },
       {
         "dataset": "Unemployment rate",
         "value": "2.70%",
-        "date_format": "Q3 2025"
+        "date_format": "Q3 2025",
+        "source": "api"
       }
     ],
-    "data_hash": "c7ce983332beb3f043b05bfa3e248b8e",
+    "data_hash": "8b44ab29ae4a71fddd44c0db993db53e",
     "changes": {},
     "success": true,
     "error": null,
-    "duration_seconds": 9.252910375595093
+    "duration_seconds": 3.5790369510650635
+  },
+  {
+    "timestamp": "2026-04-16T15:50:46.603212",
+    "data": [
+      {
+        "dataset": "Population",
+        "value": "1.80mil",
+        "date_format": "2025",
+        "source": "api"
+      },
+      {
+        "dataset": "GDP growth",
+        "value": "9.99%",
+        "date_format": "2024",
+        "source": "manual"
+      },
+      {
+        "dataset": "Median gross household income",
+        "value": "RM6,502",
+        "date_format": "2022",
+        "source": "api"
+      },
+      {
+        "dataset": "CPI inflation, year-on-year",
+        "value": "1.60%",
+        "date_format": "Feb 2026",
+        "source": "api"
+      },
+      {
+        "dataset": "Unemployment rate",
+        "value": "2.70%",
+        "date_format": "Q3 2025",
+        "source": "api"
+      }
+    ],
+    "data_hash": "31202321b027657864aed2a88d8cf7bd",
+    "changes": {
+      "GDP growth": {
+        "old_value": "3.27%",
+        "new_value": "9.99%",
+        "old_date": "2023",
+        "new_date": "2024",
+        "value_changed": true,
+        "date_changed": true
+      }
+    },
+    "success": true,
+    "error": null,
+    "duration_seconds": 2.423992872238159
+  },
+  {
+    "timestamp": "2026-04-16T15:55:08.822953",
+    "data": [
+      {
+        "dataset": "Population",
+        "value": "1.80mil",
+        "date_format": "2025",
+        "source": "api"
+      },
+      {
+        "dataset": "GDP growth",
+        "value": "4.78%",
+        "date_format": "2024",
+        "source": "manual"
+      },
+      {
+        "dataset": "Median gross household income",
+        "value": "RM6,502",
+        "date_format": "2022",
+        "source": "api"
+      },
+      {
+        "dataset": "CPI inflation, year-on-year",
+        "value": "1.60%",
+        "date_format": "Feb 2026",
+        "source": "api"
+      },
+      {
+        "dataset": "Unemployment rate",
+        "value": "2.70%",
+        "date_format": "Q3 2025",
+        "source": "api"
+      }
+    ],
+    "data_hash": "ccfd3469d35cea1dcda42c98db774d23",
+    "changes": {
+      "GDP growth": {
+        "old_value": "9.99%",
+        "new_value": "4.78%",
+        "old_date": "2024",
+        "new_date": "2024",
+        "value_changed": true,
+        "date_changed": false
+      }
+    },
+    "success": true,
+    "error": null,
+    "duration_seconds": 2.655154228210449
   }
 ]
