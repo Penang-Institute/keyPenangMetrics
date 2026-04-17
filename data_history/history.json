@@ -565,5 +565,110 @@
     "success": true,
     "error": null,
     "duration_seconds": 2.655154228210449
+  },
+  {
+    "timestamp": "2026-04-16T18:30:00.079040",
+    "data": [
+      {
+        "dataset": "Population",
+        "value": "1.80mil",
+        "date_format": "2025",
+        "source": "api"
+      },
+      {
+        "dataset": "GDP growth",
+        "value": "4.78%",
+        "date_format": "2024",
+        "source": "manual"
+      },
+      {
+        "dataset": "Median gross household income",
+        "value": "RM6,502",
+        "date_format": "2022",
+        "source": "api"
+      },
+      {
+        "dataset": "CPI inflation, year-on-year",
+        "value": "1.60%",
+        "date_format": "Feb 2026",
+        "source": "api"
+      },
+      {
+        "dataset": "Unemployment rate",
+        "value": "2.70%",
+        "date_format": "Q3 2025",
+        "source": "api"
+      }
+    ],
+    "data_hash": "ccfd3469d35cea1dcda42c98db774d23",
+    "changes": {},
+    "success": true,
+    "error": null,
+    "duration_seconds": 3.61763596534729
+  },
+  {
+    "timestamp": "2026-04-17T22:30:34.416257",
+    "data": [
+      {
+        "dataset": "Population",
+        "value": "1.80mil",
+        "date_format": "2025",
+        "source": "api"
+      },
+      {
+        "dataset": "GDP growth",
+        "value": "4.78%",
+        "date_format": "2024",
+        "source": "manual"
+      },
+      {
+        "dataset": "Median gross household income",
+        "value": "RM7,386",
+        "date_format": "2024",
+        "source": "manual"
+      },
+      {
+        "dataset": "CPI inflation, year-on-year",
+        "value": "1.80%",
+        "date_format": "Mar 2026",
+        "source": "api"
+      },
+      {
+        "dataset": "Unemployment rate",
+        "value": "2.70%",
+        "date_format": "Q4 2025",
+        "source": "manual"
+      }
+    ],
+    "data_hash": "14046cf2b2b5173bc2e305430614227d",
+    "changes": {
+      "Median gross household income": {
+        "old_value": "RM6,502",
+        "new_value": "RM7,386",
+        "old_date": "2022",
+        "new_date": "2024",
+        "value_changed": true,
+        "date_changed": true
+      },
+      "CPI inflation, year-on-year": {
+        "old_value": "1.60%",
+        "new_value": "1.80%",
+        "old_date": "Feb 2026",
+        "new_date": "Mar 2026",
+        "value_changed": true,
+        "date_changed": true
+      },
+      "Unemployment rate": {
+        "old_value": "2.70%",
+        "new_value": "2.70%",
+        "old_date": "Q3 2025",
+        "new_date": "Q4 2025",
+        "value_changed": false,
+        "date_changed": true
+      }
+    },
+    "success": true,
+    "error": null,
+    "duration_seconds": 6.651089191436768
   }
 ]

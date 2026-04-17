@@ -8,13 +8,13 @@
   title: '2024'
 - description: Median gross household income
   path: dashboards/hhinc.html
-  subtitle: RM6,502
-  title: '2022'
+  subtitle: RM7,386
+  title: '2024'
 - description: CPI inflation, year-on-year
   path: dashboards/cpi.html
-  subtitle: 1.60%
-  title: Feb 2026
+  subtitle: 1.80%
+  title: Mar 2026
 - description: Unemployment rate
   path: dashboards/labour.html
   subtitle: 2.70%
-  title: Q3 2025
+  title: Q4 2025
