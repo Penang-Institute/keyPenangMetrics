@@ -1079,5 +1079,54 @@
     "success": true,
     "error": null,
     "duration_seconds": 10.295233488082886
+  },
+  {
+    "timestamp": "2026-06-24T05:35:33.185894",
+    "data": [
+      {
+        "dataset": "Population",
+        "value": "1.80mil",
+        "date_format": "2025",
+        "source": "api"
+      },
+      {
+        "dataset": "GDP growth",
+        "value": "4.78%",
+        "date_format": "2024",
+        "source": "manual"
+      },
+      {
+        "dataset": "Median gross household income",
+        "value": "RM7,386",
+        "date_format": "2024",
+        "source": "manual"
+      },
+      {
+        "dataset": "CPI inflation, year-on-year",
+        "value": "1.90%",
+        "date_format": "May 2026",
+        "source": "api"
+      },
+      {
+        "dataset": "Unemployment rate",
+        "value": "2.70%",
+        "date_format": "Q4 2025",
+        "source": "manual"
+      }
+    ],
+    "data_hash": "6ab74d0a2ed912a88f8d5bfb7825319a",
+    "changes": {
+      "CPI inflation, year-on-year": {
+        "old_value": "1.80%",
+        "new_value": "1.90%",
+        "old_date": "Apr 2026",
+        "new_date": "May 2026",
+        "value_changed": true,
+        "date_changed": true
+      }
+    },
+    "success": true,
+    "error": null,
+    "duration_seconds": 9.925471305847168
   }
 ]
