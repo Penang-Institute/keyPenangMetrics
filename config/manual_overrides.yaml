@@ -19,9 +19,9 @@
 # To disable an override, comment it out or remove it.
 
 gdp_growth:
-  value: 4.78
-  date: "2024-01-01"
-  source: "DOSM GDP publication 2024 (Real GDP RM121,496.28mil, YoY growth from RM115,957mil)"
+  value: 7.29
+  date: "2025-01-01"
+  source: "DOSM GDP by State 2025 (embargo 1 Jul 2026), Table A7 real GDP constant 2015 prices: Penang 7.285% (RM130,283mil vs 2024e RM121,437mil). Preliminary (p)."
 
 income:
   value: 7386
@@ -30,5 +30,5 @@ income:
 
 unemployment:
   value: 2.7
-  date: "2025-10-01"
-  source: "DOSM LFS Q4 2025 (Penang), from lfs_qtr_state Excel snapshot"
+  date: "2026-01-01"
+  source: "DOSM LFS Report Q1 2026, Chart 10: Penang UR 2.7% (Q4 2025 revised 2.3%)"
