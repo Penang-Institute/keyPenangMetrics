@@ -4,17 +4,17 @@
   title: '2025'
 - description: GDP growth
   path: dashboards/gdp.html
-  subtitle: 4.78%
-  title: '2024'
+  subtitle: 7.29%
+  title: '2025'
 - description: Median gross household income
   path: dashboards/hhinc.html
   subtitle: RM7,386
   title: '2024'
 - description: CPI inflation, year-on-year
   path: dashboards/cpi.html
-  subtitle: 1.90%
-  title: May 2026
+  subtitle: 1.80%
+  title: Jun 2026
 - description: Unemployment rate
   path: dashboards/labour.html
   subtitle: 2.70%
-  title: Q4 2025
+  title: Q1 2026

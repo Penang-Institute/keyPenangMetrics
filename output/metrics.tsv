@@ -1,6 +1,6 @@
 dataset	value	date_format	source
 Population	1.80mil	2025	api
-GDP growth	4.78%	2024	manual
+GDP growth	7.29%	2025	manual
 Median gross household income	RM7,386	2024	api
-CPI inflation, year-on-year	1.90%	May 2026	api
-Unemployment rate	2.70%	Q4 2025	manual
+CPI inflation, year-on-year	1.80%	Jun 2026	api
+Unemployment rate	2.70%	Q1 2026	manual
