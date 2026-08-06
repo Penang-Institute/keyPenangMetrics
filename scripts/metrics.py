@@ -15,6 +15,9 @@ import xml.etree.ElementTree as ET
 from urllib.parse import urlencode
 from pathlib import Path
 
+# penangmonthly.com's WAF returns 403 for the default python-requests UA.
+USER_AGENT = "Mozilla/5.0 (compatible; keyPenangMetrics/1.0; +https://statistics.penanginstitute.org/)"
+
 def create_base_request():
     """Create base API request URL"""
     return "https://api.data.gov.my/data-catalogue"
@@ -313,9 +316,9 @@ def save_metrics_json(data, filename='output/metrics_grid.json'):
 
 def process_penang_monthly_rss():
     """Process Penang Monthly RSS feed for statistics articles"""
-    rss_url = "https://www.penangmonthly.com/tag/statistics/rss"
-    
-    response = requests.get(rss_url)
+    rss_url = "https://www.penangmonthly.com/tag/statistics/rss/"
+
+    response = requests.get(rss_url, headers={"User-Agent": USER_AGENT}, timeout=30)
     response.raise_for_status()
     
     root = ET.fromstring(response.content)
