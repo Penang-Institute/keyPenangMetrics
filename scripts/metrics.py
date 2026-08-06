@@ -262,6 +262,16 @@ def process_api_data():
         'source': pop_source,
     })
 
+    # An empty API response silently drops a metric above (the `if data` and the bare
+    # `continue`), which would publish a 4-card grid with a fresh timestamp and no error.
+    # Fail loudly instead: a missing metric is a bug, not a valid state.
+    expected = {'Population', *datasets}
+    missing = expected - {r['dataset'] for r in results}
+    if missing:
+        raise RuntimeError(
+            f"Expected {len(expected)} metrics, got {len(results)}. Missing: {sorted(missing)}"
+        )
+
     return results
 
 def save_metrics_tsv(data, filename='output/metrics.tsv'):
@@ -300,6 +310,10 @@ def save_metrics_json(data, filename='output/metrics_grid.json'):
     """Save metrics data as JSON with pipeline refresh timestamp"""
     from datetime import datetime
 
+    # LOAD-BEARING: this timestamp changes on every run, so metrics_grid.json always differs
+    # and the workflow always commits. That weekly commit is what keeps GitHub from
+    # auto-disabling the cron after 60 days of repo inactivity, and it is what makes
+    # "did the pipeline run this week?" answerable. Do not make this conditional.
     last_updated = datetime.now().strftime("%-d %b %Y")
     json_data = []
     for record in data:
@@ -389,8 +403,14 @@ def main():
         save_metrics_yaml(metrics_data)
         save_metrics_json(metrics_data)
 
+        # The RSS feed is enrichment, not a core metric, and it is third-party. Letting it
+        # raise here discards the metrics already written above: that is exactly what the
+        # 403 outage of 23/30 Jul 2026 did, twice, with correct data sitting on disk.
         print("Processing Penang Monthly RSS...")
-        process_penang_monthly_rss()
+        try:
+            process_penang_monthly_rss()
+        except Exception as rss_error:
+            print(f"WARNING: Penang Monthly RSS failed, keeping existing articles: {rss_error}")
 
         # Calculate duration
         duration = time.time() - start_time
