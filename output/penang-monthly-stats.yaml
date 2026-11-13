@@ -1,75 +1,118 @@
-- author: Hajar Ariff
-  date: '2026-05-01'
-  image: ''
-  path: https://www.penangmonthly.com/sustainable-tourism-in-numbers/
-  title: Sustainable Tourism In Numbers
-- author: Hajar Ariff
-  date: '2026-03-01'
-  image: ''
-  path: https://www.penangmonthly.com/an-ageing-penang-what-the-numbers-show/
-  title: 'An Ageing Penang: What The Numbers Show'
-- author: Ong Siou Woon
-  date: '2026-01-01'
-  image: ''
-  path: https://www.penangmonthly.com/the-growth-of-artificial-intelligence/
-  title: The Growth of Artificial Intelligence
-- author: Hajar Ariff
-  date: '2025-09-01'
-  image: ''
-  path: https://www.penangmonthly.com/getting-to-know-seberang-perai-selatan/
-  title: Getting to Know Seberang Perai Selatan
-- author: Hajar Ariff
-  date: '2025-04-01'
-  image: ''
-  path: https://www.penangmonthly.com/how-much-energy-are-we-consuming-2/
-  title: How Much Energy Are We Consuming?
-- author: Hajar Ariff
-  date: '2024-11-01'
-  image: ''
-  path: https://www.penangmonthly.com/water-in-penang-2/
-  title: Water in Penang
-- author: Philip Khor
-  date: '2024-08-01'
-  image: ''
-  path: https://www.penangmonthly.com/penangs-evolving-schooling-preferences/
-  title: Penang's Evolving Schooling Preferences
-- author: Philip Khor
-  date: '2024-06-01'
-  image: ''
-  path: https://www.penangmonthly.com/non-profit-organisations-in-penang/
-  title: Non-Profit Organisations In Penang
-- author: Hajar Ariff
-  date: '2024-04-01'
-  image: ''
-  path: https://www.penangmonthly.com/our-worsening-climate/
-  title: Our Worsening Climate
-- author: Yeong Pey Jung
-  date: '2024-03-01'
-  image: ''
-  path: https://www.penangmonthly.com/gender-equality-in-malaysia/
-  title: Gender Equality in Malaysia
-- author: Hajar Ariff
-  date: '2024-02-01'
-  image: ''
-  path: https://www.penangmonthly.com/creative-hub/
-  title: Creative Hubs
-- author: Doris Liew
-  date: '2024-01-01'
-  image: ''
-  path: https://www.penangmonthly.com/year-in-review-penang-key-economic-statistics/
-  title: 'Year in Review: Penang Key Economic Statistics'
-- author: Doris Liew
-  date: '2023-12-01'
-  image: ''
-  path: https://www.penangmonthly.com/how-food-price-increases-are-affecting-malaysians/
-  title: How Food Price Increases Are Affecting Malaysians
-- author: Philip Khor
-  date: '2023-11-01'
-  image: ''
-  path: https://www.penangmonthly.com/artificial-intelligence-in-numbers/
-  title: Artificial Intelligence In Numbers
-- author: Yeong Pey Jung
-  date: '2023-10-01'
-  image: ''
-  path: https://www.penangmonthly.com/the-state-of-penangs-modes-of-transport/
-  title: The State of Penang's Modes of Transport
+- author: Dato' Dr. Ooi Kee Beng
+  date: '2026-11-01'
+  description: "A green lotus seed pod on the grounds. FOR WORKAHOLICS TO drop everything\
+    \ and go on a retreat is as crazy as asking a\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_40_Image_0003.jpg
+  order: 0
+  path: https://www.penangmonthly.com/a-delightful-stay-at-rimbun-dahan-a-sidestep-rather-than-a-retreat/
+  title: 'A Delightful Stay At Rimbun Dahan: A Sidestep Rather Than A Retreat'
+- author: Dato' Dr. Ooi Kee Beng
+  date: '2026-11-01'
+  description: "ONE OF THE deepest legacies of colonisation worldwide is the nation-state.\
+    \ Having learned that every inch on earth has\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_06_Image_0001-1.jpg
+  order: 1
+  path: https://www.penangmonthly.com/highlighting-the-chauvinism-paradox-through-a-history-of-multiculturalism/
+  title: Highlighting The Chauvinism Paradox Through a History of Multiculturalism
+- author: William Tham
+  date: '2026-11-01'
+  description: "NIGHT: At the Hu Yew Seah school, a mural featuring the polymath Rabindranath\
+    \ Tag-ore, who laid its foundation stone,\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_56_Image_0001.jpg
+  order: 2
+  path: https://www.penangmonthly.com/how-long-have-you-been-here-the-art-of-migratory-pregrenations-from-bengal/
+  title: How Long Have You Been Here? The Art of Migratory Peregrinations From Bengal
+- author: Penang Monthly
+  date: '2026-11-01'
+  description: "THE FRONT OF the Hor Kai Kong Temple in Pulau Tikus filled with young\
+    \ students and neighbourhood worshippers, as a\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_54_Image_0001.jpg
+  order: 3
+  path: https://www.penangmonthly.com/teochew-puppetry-do-the-deities-approve/
+  title: 'Teochew Puppetry: Do the Deities Approve?'
+- author: Joel Teh
+  date: '2026-11-01'
+  description: "COMING HOME SHOULD be easy, or so I thought. After four years of living\
+    \ in the UK, I imagined that returning to Penang\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/SUARA-NADI-WEBSITE-BANNER-1500X844--2-.jpg
+  order: 4
+  path: https://www.penangmonthly.com/mirrored-migration-finding-the-way-home/
+  title: 'Mirrored Migration: Finding The Way Home'
+- author: Koay Su Lyn
+  date: '2026-11-01'
+  description: "BEFORE COUPONS PROLIFERATED , only to be replaced by digital parking\
+    \ applications, parking attendants were ubiquitous\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_48_Image_0001.jpg
+  order: 5
+  path: https://www.penangmonthly.com/penangs-parking-attendance-sheme-smart-move-in-difficult-times/
+  title: "Penang\u2019s Parking Attendant Scheme: Smart Move In Difficult Times"
+- author: Aqilla Latif
+  date: '2026-11-01'
+  description: "THE FIRST THING that greeted me was silence. Not the uncomfortable\
+    \ kind; instead, it settled gently over the basketry\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_47_Image_0001-1.jpg
+  order: 6
+  path: https://www.penangmonthly.com/weaving-patience-basketry-at-st-nicholas-home/
+  title: "Weaving Patience:  Basketry At  St. Nicholas\u2019 Home"
+- author: Fathima Cader
+  date: '2026-11-01'
+  description: "\u201CMY MEMORY BEGINS, as always,\u201D opens When Memory Dies, \u201C\
+    with the rain.\u201D A. Sivanandan\u2019s 1997 novel follows Ceylon\u2019s\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_43_Image_0001.jpg
+  order: 7
+  path: https://www.penangmonthly.com/between-islands-text-translation-and-contestation/
+  title: 'Between  Islands: Text, Translation And Contestation'
+- author: Shenna Tham
+  date: '2026-11-01'
+  description: "A cover image for a presentation of Semester 1 poems. BEYOND BOOKS\
+    \ AND EXAMINATIONS PFS (est. 1816) is Southeast Asia\u2019s\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_38_Image_0001-1.jpg
+  order: 8
+  path: https://www.penangmonthly.com/learning-to-learn-why-literature-still-belongs-in-school/
+  title: 'Learning To Learn:  Why Literature Still Belongs In School'
+- author: William Tham
+  date: '2026-11-01'
+  description: "OPENING WITH AN enigmatic arrival in 1970s\u2019 London, Ameli\xE9\
+    \ Skoda\u2019s novel, Beth-nal Green, follows a young woman\u2019s\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_36_Image_0001-1.jpg
+  order: 9
+  path: https://www.penangmonthly.com/making-an-investment-of-hope-an-interview-with-amelie-skoda/
+  title: "Making An  \u201CInvestment of Hope\u201D: An Interview With Ameli\xE9 Skoda"
+- author: Samuel Gopal
+  date: '2026-11-01'
+  description: ''
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/SUARA-NADI-WEBSITE-BANNER-1500X844--1-.jpg
+  order: 10
+  path: https://www.penangmonthly.com/restoring-communal-history-the-remarkable-revival-of-wadda-gurdawa-sahib/
+  title: 'Restoring Communal History:  The Remarkable Revival of  Wadda Gurdwara Sahib'
+- author: Carolyn Khor
+  date: '2026-11-01'
+  description: ''
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_26_Image_0001.jpg
+  order: 11
+  path: https://www.penangmonthly.com/changing-money-changing-times/
+  title: Changing Money,  Changing Times
+- author: Dr. Khoo Suet Leng
+  date: '2026-11-01'
+  description: "Heritage caf\xE9 located in the front portion of the building. IF\
+    \ THE WALLS, windows and doors of Penang\u2019s \u201CLittle India\u201D\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_23_Image_0001-2-1.jpg
+  order: 12
+  path: https://www.penangmonthly.com/the-indian-heritage-gallery-cultural-centre-opens-its-doors/
+  title: The Indian Heritage Gallery & Cultural Centre  Opens Its Doors
+- author: Miriam Devaprasana
+  date: '2026-11-01'
+  description: "JUST PAST 8.30AM, I am hit by oppressive fumes of exhaust as the 101\
+    \ pulls away from the \u201CLittle India\u201D bus stop. The\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/__260917_PM_2611_Digital_FA_Page_20_Image_0001.jpg
+  order: 13
+  path: https://www.penangmonthly.com/a-smellscape-of-little-india/
+  title: A Smellscape of Little India
+- author: Kenneth Wong See Huat
+  date: '2026-11-01'
+  description: "IN ANTHONY CHEAH\u2019S watercolour painting, \u201COttu Kadai Penang\u201D\
+    , the small shop being depicted occupies hardly any space,\u2026"
+  image: https://www.penangmonthly.com/content/images/size/w600/2026/10/SUARA-NADI-WEBSITE-BANNER-1500X844.jpg
+  order: 14
+  path: https://www.penangmonthly.com/behind-the-counter-can-penangs-ottu-kadai-survive-another-generation/
+  title: "Behind the Counter:  Can Penang\u2019s Ottu Kadai Survive Another Generation?"

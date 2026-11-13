@@ -5,12 +5,14 @@ Python migration of scripts/metrics.R
 """
 
 import os
+import re
 import json
 import yaml
 import requests
 import pandas as pd
 import pyarrow.parquet as pq
 from datetime import datetime
+from html import unescape
 import xml.etree.ElementTree as ET
 from urllib.parse import urlencode
 from pathlib import Path
@@ -328,9 +330,47 @@ def save_metrics_json(data, filename='output/metrics_grid.json'):
     with open(filename, 'w') as f:
         json.dump(json_data, f, indent=2)
 
+# Ghost puts the article image in media:content and the byline in dc:creator,
+# both namespaced. An unnamespaced find('content') matches nothing, which is why
+# every card used to render with image: ''.
+MEDIA_CONTENT = '{http://search.yahoo.com/mrss/}content'
+DC_CREATOR = '{http://purl.org/dc/elements/1.1/}creator'
+
+# Ghost's own resize endpoint. Originals run to 3.7 MB; w600 is about 441 KB and
+# is already twice the rendered card width, so it stays sharp on retina screens.
+IMAGE_WIDTH = 'w600'
+
+# Roughly two lines in the card at the site's body size.
+STANDFIRST_CHARS = 120
+
+
+def resized_image_url(url: str, width: str = IMAGE_WIDTH) -> str:
+    """Rewrite a Ghost image URL to ask for a resized copy."""
+    marker = '/content/images/'
+    if not url or marker not in url or '/size/' in url:
+        return url
+    return url.replace(marker, f'{marker}size/{width}/', 1)
+
+
+def standfirst(description_html: str, limit: int = STANDFIRST_CHARS) -> str:
+    """Flatten a feed description to one short line of plain text."""
+    text = re.sub(r'<[^>]+>', ' ', description_html or '')
+    text = unescape(text)
+    text = ' '.join(text.split())
+    if len(text) <= limit:
+        return text
+    return text[:limit].rsplit(' ', 1)[0] + '\u2026'
+
+
 def process_penang_monthly_rss():
-    """Process Penang Monthly RSS feed for statistics articles"""
-    rss_url = "https://www.penangmonthly.com/tag/statistics/rss/"
+    """Process the Penang Monthly RSS feed into listing metadata.
+
+    Reads the whole magazine rather than the Statistics tag. The client asked
+    for the latest articles regardless of tag (Oct 2026); the tag feed lagged
+    the magazine by about five months because it only carries the handful of
+    articles filed under Statistics.
+    """
+    rss_url = "https://www.penangmonthly.com/rss/"
 
     response = requests.get(rss_url, headers={"User-Agent": USER_AGENT}, timeout=30)
     response.raise_for_status()
@@ -356,20 +396,23 @@ def process_penang_monthly_rss():
                 except ValueError:
                     continue
         
-        # Get content URL for image
-        content = item.find('content')
-        image_url = content.get('url') if content is not None else ''
-        
-        # Get author
-        creator = item.find('.//{http://purl.org/dc/elements/1.1/}creator')
+        media = item.find(MEDIA_CONTENT)
+        image_url = resized_image_url(media.get('url', '')) if media is not None else ''
+
+        creator = item.find(f'.//{DC_CREATOR}')
         author = creator.text if creator is not None else ''
-        
+
         if date_str:  # Only add if we found a valid date
             articles.append({
+                # The magazine publishes a whole issue at once, so every article
+                # shares one pubDate and one issue tag. Carry the feed's own
+                # running order so the listing has something to sort on.
+                'order': len(articles),
                 'title': title,
                 'date': date_str,
                 'path': link,
                 'image': image_url,
+                'description': standfirst(item.findtext('description', '')),
                 'author': author
             })
     
