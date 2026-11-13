@@ -352,10 +352,23 @@ def resized_image_url(url: str, width: str = IMAGE_WIDTH) -> str:
     return url.replace(marker, f'{marker}size/{width}/', 1)
 
 
+# Stripping tags before unescaping hands back live markup: a feed carrying
+# &lt;script&gt; survives the strip untouched, and unescape then turns it into a
+# real tag. Unescape first, strip after, and repeat until the text stops
+# changing so double-encoded markup cannot slip through either. The cap stops
+# a pathological input from looping; text that has not settled by then keeps
+# its entities literal, which renders as visible characters, not markup.
+FLATTEN_PASSES = 4
+
+
 def standfirst(description_html: str, limit: int = STANDFIRST_CHARS) -> str:
-    """Flatten a feed description to one short line of plain text."""
-    text = re.sub(r'<[^>]+>', ' ', description_html or '')
-    text = unescape(text)
+    """Flatten a feed description to one short line of tag-free plain text."""
+    text = description_html or ''
+    for _ in range(FLATTEN_PASSES):
+        flattened = re.sub(r'<[^>]+>', ' ', unescape(text))
+        if flattened == text:
+            break
+        text = flattened
     text = ' '.join(text.split())
     if len(text) <= limit:
         return text
